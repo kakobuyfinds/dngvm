@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#18234a">
+  <title>GoatedBuy spreadsheet | Koopgids voor maten, QC en verzending</title>
+  <meta name="description" content="Gebruik de GoatedBuy spreadsheet als startpunt. Controleer productlinks, vergelijk maten, lees QC-foto’s en bereken je pakketkosten voor Nederland of België.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GoatedBuy spreadsheet | Koopgids voor maten, QC en verzending">
+  <meta property="og:description" content="Bekijk de categorieën en ontdek wat je per product en pakket controleert vóór je bestelt.">
+  <link rel="preconnect" href="https://static.nike.com">
+  <!-- Redactioneel zoekonderzoek: de eerste resultatenpagina van Google was niet rechtstreeks toegankelijk.
+       Dezelfde zoekopdracht leverde tien geraadpleegde domeinen op; hun Google-posities zijn niet bevestigd.
+       goated-buy.com: aankoop en pakketbundeling
+       qcradar.com: bronlinks, QC en prijsopbouw
+       uidbuyspreadsheet.com: inkoopagent en magazijn
+       goatedbuyspreadsheets.com: categorieën en productvergelijking
+       goatedbuysheet.net: maatnotities en fotocontrole
+       goatedspreadsheet.com: aankoopvolgorde en verzendvoorwaarden
+       goatedbuysheet.com: assortiment en voorraadcontrole
+       reddit.com: zoeken op afbeelding en modelnaam
+       mixfittio.com: kostenposten van inkoopagenten
+       goatedbuyindex.com: controlepunten van productlink tot pakket
+       Vier secundaire zoektermen: GoatedBuy productlinks, GoatedBuy maattabel, GoatedBuy QC-foto’s, GoatedBuy verzendkosten.
+       Long-tail zoekvragen verwerkt in de gids: originele Weidian-productlink vinden, Taobao-variant controleren,
+       minimumafname op 1688 bekijken, product zoeken op modelcode, verlopen productlink herkennen,
+       verkopersvoorraad controleren, voetlengte in centimeters meten, binnenzoollengte vergelijken,
+       borstbreedte plat meten, ruglengte van een T-shirt meten, mouwlengte van een jas vergelijken,
+       binnenbeenlengte van een broek opmeten, hoofdomtrek voor een pet meten, armbandomtrek vergelijken,
+       QC-foto van de buitenzool bekijken, maatlabel op magazijnfoto controleren, sluiting van een armband inspecteren,
+       herkomst van een merkartikel controleren, binnenlandse verzendkosten meetellen, pakketten samenvoegen,
+       volumetrisch gewicht vergelijken, verzenden naar Nederland of België, pakketkosten vooraf berekenen,
+       retourvoorwaarden bij verkeerde maat controleren. -->
+  <style>
+    :root { color-scheme: light; --navy: #18234a; --ink: #1b2334; --muted: #46536c; --paper: #f1f4fa; --lime: #e6fa89; --line: #ced6e4; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.6 system-ui, sans-serif; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { line-height: 1.13; overflow-wrap: break-word; }
+    h1 { font-size: clamp(2.15rem, 6.6vw, 5rem); letter-spacing: -.055em; }
+    h2 { font-size: clamp(1.55rem, 3.4vw, 2.5rem); letter-spacing: -.035em; }
+    h3 { font-size: 1.15rem; }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #2854a9; outline-offset: 4px; }
+    .hero a:focus-visible, header a:focus-visible { outline-color: var(--lime); }
+    img { display: block; width: 100%; }
+    .wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+    header { background: var(--navy); color: white; }
+    .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .3rem 1rem; padding-block: .75rem; }
+    .brand { font-weight: 800; text-decoration: none; }
+    .brand:hover { text-decoration: underline; }
+    .tag { font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .categories { padding-block: .85rem 1.2rem; }
+    .categories ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: .4rem; padding: 0; margin: .4rem 0 0; list-style: none; }
+    .categories a { display: grid; place-items: center; min-height: 44px; height: 100%; padding: .35rem; border: 1px solid var(--line); background: white; text-align: center; font-size: .87rem; font-weight: 700; text-decoration: none; }
+    .categories a:hover { background: var(--lime); border-color: var(--navy); }
+    .hero { display: grid; background: var(--navy); color: white; }
+    .intro { align-self: center; padding: clamp(1.2rem, 5vw, 3.1rem); }
+    .intro .tag { margin-bottom: .6rem; color: var(--lime); }
+    .intro p:not(.tag) { max-width: 51ch; margin-top: 1rem; }
+    .button { display: inline-block; margin-top: 1.15rem; padding: .62rem 1rem; background: var(--lime); color: var(--navy); font-weight: 800; text-decoration: none; }
+    .button:hover { background: white; }
+    .hero figure { display: grid; align-content: end; background: #10182f; }
+    .hero img { height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+    .hero figcaption { padding: .5rem .85rem; color: #dbe5ff; font-size: .85rem; }
+    .section { margin-block: clamp(2.1rem, 6vw, 4.2rem); }
+    .section > p { margin-top: .55rem; max-width: 68ch; }
+    .notes { display: grid; gap: 1px; margin-top: 1rem; background: var(--line); border: 1px solid var(--line); }
+    .notes article { padding: clamp(.95rem, 3vw, 1.45rem); background: white; }
+    .notes .tag { display: inline-block; margin-bottom: .55rem; padding: .12rem .45rem; background: var(--lime); }
+    .notes article p + p, .notes h3 + p { margin-top: .6rem; }
+    .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin-top: 1rem; }
+    .gallery figure { background: white; border: 1px solid var(--line); }
+    .gallery img { height: auto; aspect-ratio: 1; object-fit: contain; background: white; }
+    .gallery figcaption { padding: .6rem .75rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    .faq { padding: clamp(1rem, 3.5vw, 2rem); border-left: .35rem solid var(--navy); background: white; }
+    .faq h2 { margin-bottom: .7rem; }
+    .faq details + details { border-top: 1px solid var(--line); }
+    .faq summary { padding: .68rem 0; font-weight: 750; cursor: pointer; }
+    .faq details p { max-width: 72ch; padding-bottom: .9rem; }
+    footer { padding-block: 1rem 1.45rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+    @media (min-width: 48rem) {
+      .hero { grid-template-columns: 1.05fr 1fr; }
+      .hero img { aspect-ratio: 5 / 4; }
+      .notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "nl",
+    "name": "GoatedBuy spreadsheet – koopgids",
+    "description": "Nederlandstalige koopgids over productlinks, maten, QC-foto’s en pakketkosten.",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat is een GoatedBuy spreadsheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Het is een overzicht waarmee je productlinks uit Chinese marktplaatsen kunt verzamelen en vergelijken. Controleer de actuele variant en voorraad op de productpagina voordat je een aankoop doorgeeft."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar gaan de categorielinks op deze pagina naartoe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De categorieën openen de bijbehorende rubrieken op cafans.com. Voor een bestelling via GoatedBuy heb je de originele productlink van de verkoper nodig."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kun je met QC-foto’s zien of een merkartikel echt is?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QC-foto’s helpen je de zichtbare staat, kleur en maatlabels te beoordelen. Voor zekerheid over echtheid heb je controleerbare herkomstinformatie of een beoordeling door een specialist nodig."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waarom wijkt de verzendschatting af van de uiteindelijke prijs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De eerste schatting gaat uit van voorlopige gegevens. Na het inpakken kunnen afmetingen, gewicht en de beschikbare route veranderen. Controleer de uiteindelijke prijs met het ingepakte pakket en het juiste bestemmingsland."
+        }
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/dngvm/">
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="https://www.cafans.com">www.cafans.com</a>
+      <span class="tag">Nederlandstalige koopgids</span>
+    </div>
+  </header>
+
+  <nav class="wrap categories" aria-labelledby="categories-label">
+    <p class="tag" id="categories-label">Blader op categorie</p>
+    <ul>
+      <li><a href="https://cafans.com/category-911-Shoes.html">Schoenen</a></li>
+      <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hoodies en truien</a></li>
+      <li><a href="https://cafans.com/category-913-T-Shirts.html">T-shirts</a></li>
+      <li><a href="https://cafans.com/category-914-Jackets.html">Jassen</a></li>
+      <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Broeken en shorts</a></li>
+      <li><a href="https://cafans.com/category-916-Headwear.html">Hoofddeksels</a></li>
+      <li><a href="https://cafans.com/category-917-Sets.html">Kledingsets</a></li>
+      <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Ondergoed</a></li>
+      <li><a href="https://cafans.com/category-919-Jersey.html">Sportshirts</a></li>
+      <li><a href="https://cafans.com/category-920-Accessories.html">Accessoires</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div class="intro">
+        <p class="tag">Van productlink tot pakket</p>
+        <h1 id="title">GoatedBuy spreadsheet</h1>
+        <p>Gebruik een GoatedBuy spreadsheet als shortlist voor schoenen, kleding en accessoires. Vergelijk eerst de oorspronkelijke productpagina en de maat. Kijk daarna welke foto’s en verzendgegevens je nog nodig hebt om te beslissen.</p>
+        <a class="button" href="https://www.cafans.com">Bekijk de catalogus op cafans.com</a>
+      </div>
+      <figure>
+        <img src="https://static.nike.com/a/images/w_720,f_webp,q_77/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png"
+             srcset="https://static.nike.com/a/images/w_480,f_webp,q_77/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png 480w, https://static.nike.com/a/images/w_720,f_webp,q_77/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png 720w"
+             sizes="(min-width: 48rem) 50vw, calc(100vw - 2rem)"
+             width="720" height="900" fetchpriority="high" loading="eager"
+             alt="Zijaanzicht van een witte Nike Air Force 1 ’07 met witte Swoosh en zool">
+        <figcaption>Stijlvoorbeeld · Nike Air Force 1 ’07</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="guides-title">
+      <h2 id="guides-title">Vier controles vóór je beslist</h2>
+      <p>Noteer per kandidaat de bronlink, variant en datum van je laatste controle. Zo zie je meteen welke informatie nog ontbreekt.</p>
+      <div class="notes">
+        <article>
+          <p class="tag">01 · Bron</p>
+          <h3>GoatedBuy productlinks nalopen</h3>
+          <p>Open de originele Weidian-productlink en kijk of de verkoper je gekozen maat en kleur nog aanbiedt. Controleer op Taobao de geselecteerde variant en kijk op 1688 of er een minimumafname geldt.</p>
+          <p>Is de productlink verlopen? Zoek op de modelcode en bewaar de nieuwe bronlink pas nadat je de foto’s en variant hebt vergeleken.</p>
+        </article>
+        <article>
+          <p class="tag">02 · Pasvorm</p>
+          <h3>De maattabel naast je eigen metingen leggen</h3>
+          <p>Meet je voetlengte in centimeters en vergelijk de binnenzoollengte met die van een goed passende schoen. Meet een T-shirt plat op voor borstbreedte en ruglengte. Let bij een jas op de mouwlengte en bij een broek op de binnenbeenlengte.</p>
+          <p>Controleer bij petten je hoofdomtrek en bij armbanden de binnenomtrek. Vraag bij twijfel hoe de verkoper heeft gemeten en welke retourvoorwaarden gelden als de maat afwijkt.</p>
+        </article>
+        <article>
+          <p class="tag">03 · Foto’s</p>
+          <h3>GoatedBuy QC-foto’s beoordelen</h3>
+          <p>Vergelijk magazijnfoto’s met je bestelling. Vraag bij sneakers om een foto van de buitenzool en het maatlabel. Bekijk bij een jas de naden en bij een armband de sluiting. Laat een ontbrekende foto opvragen als die je beslissing kan veranderen.</p>
+          <p>Wil je de herkomst van een merkartikel vaststellen? Controleer de verkoper en vraag om documentatie die aan het specifieke artikel is gekoppeld.</p>
+        </article>
+        <article>
+          <p class="tag">04 · Pakket</p>
+          <h3>GoatedBuy verzendkosten vooraf vergelijken</h3>
+          <p>Tel de artikelprijs, binnenlandse bezorgkosten en internationale verzending bij elkaar op. Vergelijk de route voor Nederland of België met de buitenmaten en het gewicht van het ingepakte pakket. Controleer of de vervoerder het werkelijke of volumetrische gewicht rekent.</p>
+          <p>Vergelijk de schatting voor losse pakketten met die voor één gebundeld pakket. Houd eventuele bijkomende kosten apart bij, zodat je ziet welke posten nog onzeker zijn.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="style-title">
+      <h2 id="style-title">Stijlvoorbeelden per producttype</h2>
+      <p>Bekijk per producttype welk detail je wilt terugzien op een foto. De afbeeldingen dienen als stijlinspiratie.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://in.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-single-breasted-napolitana-jacket--HUFJ2EUQW900_PM2_Front%20view.jpg?wid=480&amp;hei=480"
+               width="480" height="480" loading="lazy" decoding="async" alt="Zwart Louis Vuitton Napolitana-colbert met revers, gezien van voren">
+          <figcaption>Louis Vuitton · Revers en schouderlijn</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/943J605A0554C080_E01-3?%24default_GHC%24=&amp;crop=438%2C150%2C1130%2C1358&amp;wid=480"
+               width="480" height="577" loading="lazy" decoding="async" alt="Wit Dior CD Icon T-shirt met ronde hals en tonale borstborduring">
+          <figcaption>Dior · Halslijn en borstborduring</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg"
+               width="640" height="640" loading="lazy" decoding="async" alt="Beige Gucci baseballpet met bruin GG-patroon en gebogen klep">
+          <figcaption>Gucci · Klep en patroon</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.crepslocker.com/cdn/shop/files/hermes-paris-clic-h-black-bracelet-h700001fv01pm-front.webp?v=1716898801&amp;width=480"
+               width="480" height="480" loading="lazy" decoding="async" alt="Hermès Clic H-armband met zwart emaille en goudkleurige H-sluiting">
+          <figcaption>Hermès · Sluiting en emaille</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Veelgestelde vragen</h2>
+      <details open>
+        <summary>Wat is een GoatedBuy spreadsheet?</summary>
+        <p>Het is een overzicht waarmee je productlinks uit Chinese marktplaatsen kunt verzamelen en vergelijken. Controleer de actuele variant en voorraad op de productpagina voordat je een aankoop doorgeeft.</p>
+      </details>
+      <details>
+        <summary>Waar gaan de categorielinks op deze pagina naartoe?</summary>
+        <p>De categorieën openen de bijbehorende rubrieken op cafans.com. Voor een bestelling via GoatedBuy heb je de originele productlink van de verkoper nodig.</p>
+      </details>
+      <details>
+        <summary>Kun je met QC-foto’s zien of een merkartikel echt is?</summary>
+        <p>QC-foto’s helpen je de zichtbare staat, kleur en maatlabels te beoordelen. Voor zekerheid over echtheid heb je controleerbare herkomstinformatie of een beoordeling door een specialist nodig.</p>
+      </details>
+      <details>
+        <summary>Waarom wijkt de verzendschatting af van de uiteindelijke prijs?</summary>
+        <p>De eerste schatting gaat uit van voorlopige gegevens. Na het inpakken kunnen afmetingen, gewicht en de beschikbare route veranderen. Controleer de uiteindelijke prijs met het ingepakte pakket en het juiste bestemmingsland.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Onafhankelijke koopgids. De merken bij de beelden benoemen de afgebeelde stijlvoorbeelden.</p>
+    </div>
+  </footer>
+</body>
+</html>
